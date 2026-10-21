@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanPro Laundry & Dry Cleaning Suite</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Free Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Master Stylesheet -->
+    <meta name="theme-color" content="#0b2f33">
+    <link rel="stylesheet" href="style.css?v=20261012d">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       1. AUTHENTICATION VIEW (Full-Screen Split-Hero Portal)
+       ========================================================================== -->
+    <div id="auth-view" class="auth-wrapper">
+        <div class="auth-container">
+            <!-- Left: High-Impact Brand Showcase -->
+            <div class="auth-showcase">
+                <div class="auth-brand-badge">
+                    <span class="pulse-dot"></span>
+                    <span>System Online • GROUP ?</span>
+                </div>
+                <h1 class="auth-showcase-title">Smart Laundry Management System.</h1>
+                <p class="auth-showcase-desc">
+                    A comprehensive management suite for modern laundry and dry cleaning businesses. Seamless customer bookings, queue tracking, and revenue analytics.
+                </p>
+
+                <div class="auth-features-list">
+                    <div class="auth-feature-item">
+                        <div class="auth-feature-icon"><i class="fa-solid fa-shirt"></i></div>
+                        <div class="auth-feature-text">
+                            <h4>Real-Time Garment Tracking</h4>
+                            <p>4-stage visual order progression from washing to claim counter.</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature-item">
+                        <div class="auth-feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <div class="auth-feature-text">
+                            <h4>Smart Capacity Scheduling</h4>
+                            <p>Automated slot limits prevent bottlenecks during peak hours.</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature-item">
+                        <div class="auth-feature-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="auth-feature-text">
+                            <h4>Instant Claim Ticket Printing</h4>
+                            <p>Generate authentic printable receipts with barcode tracking.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 122, 89, 0.18); color: #ff9d82; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; color: white; font-size: 0.9rem;">Secure Commercial Access</div>
+                        <div style="color: var(--slate-400); font-size: 0.8rem; margin-top: 0.15rem;">Role-based operational dashboard for store owners, front desk staff, and registered customers.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Authentication Card -->
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo-badge shop-logo-slot">🧺</div>
+                    <h2 class="auth-title shop-name-slot">CleanPro Laundry</h2>
+                    <p class="auth-subtitle shop-tagline-slot">Premium Garment Care & Express Services</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn active" id="tab-btn-login" onclick="switchAuthTab('login')">
+                        <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                    </button>
+                    <button class="auth-tab-btn" id="tab-btn-register" onclick="switchAuthTab('register')">
+                        <i class="fa-solid fa-user-plus"></i> Create Account
+                    </button>
+                </div>
+
+                <!-- Sign In Pane -->
+                <div id="tab-pane-login" class="auth-tab-pane">
+                    <form onsubmit="app.login(event)">
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="req">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input type="email" id="login-email" class="form-control with-icon" placeholder="name@business.com" autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password <span class="req">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input type="password" id="login-password" class="form-control with-icon" placeholder="••••••••" autocomplete="current-password" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1.5rem;">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Dashboard
+                        </button>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="#" onclick="app.openModal('modal-forgot-password'); return false;" style="color: #0e7c7b; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                                <i class="fa-solid fa-key"></i> Recover your password?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Register Pane -->
+                <div id="tab-pane-register" class="auth-tab-pane" style="display: none;">
+                    <form onsubmit="app.register(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name <span class="req">*</span></label>
+                                <input type="text" id="reg-fname" class="form-control" placeholder="Maria" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name <span class="req">*</span></label>
+                                <input type="text" id="reg-lname" class="form-control" placeholder="Santos" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="req">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input type="email" id="reg-email" class="form-control with-icon" placeholder="maria@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Password <span class="req">*</span></label>
+                                <input type="password" id="reg-password" class="form-control" placeholder="Min. 6 chars" minlength="6" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" id="reg-phone" class="form-control" placeholder="+63 917 000 0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Delivery / Home Address</label>
+                            <textarea id="reg-address" class="form-control" placeholder="Street, Unit/Bldg, City" rows="2"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+                            <i class="fa-solid fa-user-check"></i> Register Customer Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. APPLICATION SHELL (Authenticated Suite)
+       ========================================================================== -->
+    <div id="app-shell" style="display: none;">
+        <!-- Mobile Sidebar Overlay Backdrop -->
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="app.closeMobileSidebar()"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside id="app-sidebar" class="app-sidebar">
+            <div class="sidebar-header">
+                <div class="shop-brand-logo shop-logo-slot">🧺</div>
+                <div class="shop-brand-info">
+                    <div class="shop-brand-title shop-name-slot">CleanPro Laundry</div>
+                    <div class="shop-brand-sub shop-tagline-slot">Premium Garment Care</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Navigation Links -->
+            <div class="sidebar-nav" id="sidebar-nav-container"></div>
+
+            <!-- Sidebar User Card Footer -->
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-user">
+                    <div class="user-avatar-sm" id="sidebar-user-avatar">AD</div>
+                    <div class="user-info-text">
+                        <div class="user-header-name" id="sidebar-user-name" style="color: white; font-size: 0.85rem;">Alexander Vance</div>
+                        <div class="user-header-role" id="sidebar-user-role" style="color: #ff9d82; font-size: 0.7rem;">OWNER</div>
+                    </div>
+                </div>
+                <button class="sidebar-logout-btn" onclick="app.logout()" title="Sign Out">
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Top Header Bar -->
+        <header class="app-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" onclick="app.toggleMobileSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="header-shop-status">
+                    <span class="status-dot"></span>
+                    <span>Store Open & Online</span>
+                </div>
+                <div class="header-clock" id="live-clock">Oct 7, 2026 • 08:00 AM</div>
+            </div>
+
+            <div class="header-right">
+                <!-- Notifications Popover -->
+                <div class="notif-wrapper">
+                    <button class="btn-icon" id="notif-btn" onclick="app.toggleNotifications()" title="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span id="notif-badge" class="notif-badge-count" style="display: none;">0</span>
+                    </button>
+
+                    <!-- Dropdown Container -->
+                    <div id="notif-dropdown" class="notif-dropdown">
+                        <div class="notif-dropdown-header">
+                            <h4>Notifications</h4>
+                            <button onclick="app.markAllNotificationsRead()">Mark all as read</button>
+                        </div>
+                        <div class="notif-dropdown-body" id="notif-dropdown-list"></div>
+                    </div>
+                </div>
+
+                <!-- User Profile Pill -->
+                <div class="user-profile-chip">
+                    <div class="user-avatar-sm" id="header-user-avatar">US</div>
+                    <div class="user-info-text">
+                        <div class="user-header-name" id="header-user-name">User Name</div>
+                        <div class="user-header-role" id="header-user-role">Role</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary btn-sm" onclick="app.logout()" title="Sign Out">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="main-wrapper">
+
+            <!-- ==========================================
+               CUSTOMER PORTAL PAGES
+               ========================================== -->
+
+            <!-- Customer Dashboard -->
+            <div id="page-customer-dashboard" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-house-chimney-window"></i> Customer Portal</h1>
+                        <p class="page-subtitle">Welcome back! Manage your scheduled drop-offs and track active laundry batches.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.navigate('customer-booking')">
+                        <i class="fa-solid fa-calendar-plus"></i> Book Drop-off
+                    </button>
+                </div>
+
+                <!-- Announcements Banner Container -->
+                <div id="customer-announcements-banner"></div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card sky">
+                        <div class="stat-content">
+                            <div class="stat-label">Next Scheduled Drop-off</div>
+                            <div class="stat-value" id="cust-stat-next-apt" style="font-size: 1.35rem; margin-top: 0.5rem;">None</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+                    </div>
+
+                    <div class="stat-card emerald">
+                        <div class="stat-content">
+                            <div class="stat-label">Ready for Store Pickup</div>
+                            <div class="stat-value" id="cust-stat-ready">0</div>
+                            <div class="stat-trend"><i class="fa-solid fa-check"></i> Clean & Bagged</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-bag-shopping"></i></div>
+                    </div>
+
+                    <div class="stat-card amber">
+                        <div class="stat-content">
+                            <div class="stat-label">In Washing & Drying</div>
+                            <div class="stat-value" id="cust-stat-progress">0</div>
+                            <div class="stat-trend" style="color: var(--warning);"><i class="fa-solid fa-spinner fa-spin"></i> Active</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-soap"></i></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-label">Total Lifetime Orders</div>
+                            <div class="stat-value" id="cust-stat-total">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-receipt"></i></div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Tiles -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="quick-action-grid">
+                        <div class="action-tile" onclick="app.navigate('customer-booking')">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            <span>Book New Drop-off</span>
+                        </div>
+                        <div class="action-tile" onclick="app.navigate('customer-orders')">
+                            <i class="fa-solid fa-shirt"></i>
+                            <span>Track Active Orders</span>
+                        </div>
+                        <div class="action-tile" onclick="app.navigate('customer-appointments')">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Manage Appointments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Recent Orders</h3>
+                        <button class="btn btn-secondary btn-sm" onclick="app.navigate('customer-orders')">View All Orders</button>
+                    </div>
+                    <div id="cust-recent-orders-list"></div>
+                </div>
+            </div>
+
+            <!-- Customer Booking Page -->
+            <div id="page-customer-booking" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-calendar-plus"></i> Book Drop-off Appointment</h1>
+                        <p class="page-subtitle">Select your care service, pick a date and available time slot to skip counter lines.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <form onsubmit="app.submitBooking(event)">
+                        <!-- Step 1: Service Selection -->
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 1rem; margin-bottom: 0.75rem;">
+                                1. Select Laundry Service <span class="req">*</span>
+                            </label>
+                            <div class="service-cards-grid" id="booking-service-cards"></div>
+                            <input type="hidden" id="booking-selected-service" required>
+                        </div>
+
+                        <!-- Step 2: Date & Slots -->
+                        <div class="form-row" style="margin-top: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label">2. Drop-off Date <span class="req">*</span></label>
+                                <input type="date" id="booking-date-input" class="form-control" onchange="app.loadAvailableSlots(this.value)" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Estimated Laundry Weight (kg)</label>
+                                <input type="number" id="booking-weight-input" class="form-control" min="1" step="0.5" value="3" oninput="app.calculateBookingEstimate()" required>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Slots Matrix -->
+                        <div class="form-group">
+                            <label class="form-label">3. Available Time Slots <span class="req">*</span></label>
+                            <div class="slots-container">
+                                <div class="slots-grid" id="booking-slots-grid"></div>
+                            </div>
+                            <input type="hidden" id="booking-selected-slot" required>
+                        </div>
+
+                        <!-- Step 4: Special Instructions -->
+                        <div class="form-group">
+                            <label class="form-label">Special Care Notes / Garment Instructions</label>
+                            <textarea id="booking-instructions" class="form-control" placeholder="E.g., Separate whites, delicate silk blouse, extra softener, remove ink stain on collar..."></textarea>
+                        </div>
+
+                        <!-- Estimate & Submit -->
+                        <div style="background: var(--slate-50); border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
+                            <div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase;">Estimated Total Due</div>
+                                <div id="booking-total-preview" style="font-size: 2rem; font-weight: 900; color: var(--brand-primary);">₱0.00</div>
+                                <div style="font-size: 0.75rem; color: var(--slate-500);">Final weight will be verified upon counter intake.</div>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <button type="button" class="btn btn-secondary" onclick="app.navigate('customer-dashboard')">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fa-solid fa-check"></i> Confirm Drop-off Booking
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Customer Appointments Page -->
+            <div id="page-customer-appointments" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-calendar-check"></i> My Appointments</h1>
+                        <p class="page-subtitle">Review scheduled appointments and cancel or modify bookings within the cancellation window.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.navigate('customer-booking')">
+                        <i class="fa-solid fa-calendar-plus"></i> New Booking
+                    </button>
+                </div>
+
+                <div id="cust-appointments-list"></div>
+            </div>
+
+            <!-- Customer Orders Page -->
+            <div id="page-customer-orders" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-shirt"></i> Order History & Live Tracking</h1>
+                        <p class="page-subtitle">Track your garment processing status in real-time and access claim slips.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.navigate('customer-booking')">
+                        <i class="fa-solid fa-calendar-plus"></i> Book Another Batch
+                    </button>
+                </div>
+
+                <div id="cust-orders-list"></div>
+            </div>
+
+            <!-- ==========================================
+               STAFF OPERATIONS PAGES
+               ========================================== -->
+
+            <!-- Staff Dashboard -->
+            <div id="page-staff-dashboard" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-clipboard-user"></i> Staff Operations Console</h1>
+                        <p class="page-subtitle">Monitor today's counter drop-offs, intake queue, and washing workloads.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.navigate('staff-queue')">
+                        <i class="fa-solid fa-list-check"></i> Open Intake Queue
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card sky">
+                        <div class="stat-content">
+                            <div class="stat-label">Today's Appointments</div>
+                            <div class="stat-value" id="staff-stat-today-apts">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-calendar-day"></i></div>
+                    </div>
+                    <div class="stat-card amber">
+                        <div class="stat-content">
+                            <div class="stat-label">Pending Intake</div>
+                            <div class="stat-value" id="staff-stat-pending-checkins">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-hourglass-half"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-label">In Washing & Drying</div>
+                            <div class="stat-value" id="staff-stat-in-wash">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-soap"></i></div>
+                    </div>
+                    <div class="stat-card emerald">
+                        <div class="stat-content">
+                            <div class="stat-label">Ready for Pickup</div>
+                            <div class="stat-value" id="staff-stat-ready">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-circle-check"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-users-line"></i> Today's Drop-off Queue Preview</h3>
+                        <button class="btn btn-secondary btn-sm" onclick="app.navigate('staff-queue')">Full Queue View</button>
+                    </div>
+                    <div id="staff-today-queue-preview"></div>
+                </div>
+            </div>
+
+            <!-- Staff Queue Page -->
+            <div id="page-staff-queue" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-list-check"></i> Intake Queue & Customer Check-In</h1>
+                        <p class="page-subtitle">Check in customers arriving for their scheduled time slots and generate claim tickets.</p>
+                    </div>
+                </div>
+
+                <div id="staff-queue-items"></div>
+            </div>
+
+            <!-- Staff Orders Page -->
+            <div id="page-staff-orders" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-boxes-stacked"></i> Laundry Batch Lifecycle</h1>
+                        <p class="page-subtitle">Update garment processing states: Pending → In Wash → Ready → Claimed.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-row" style="margin-bottom: 1.25rem;">
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                            <input type="text" id="staff-order-search-input" class="form-control with-icon" placeholder="Search by Order ID, Customer Name, or Service..." oninput="app.loadStaffOrders()">
+                        </div>
+                        <select id="staff-order-filter-status" class="form-control" onchange="app.loadStaffOrders()">
+                            <option value="all">All Processing Stages</option>
+                            <option value="pending">Pending Intake</option>
+                            <option value="processing">In Wash / Drying</option>
+                            <option value="ready-for-pickup">Ready for Pickup</option>
+                            <option value="picked-up">Claimed / Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Weight</th>
+                                    <th>Total</th>
+                                    <th>Update Status</th>
+                                    <th>Claim Slip</th>
+                                </tr>
+                            </thead>
+                            <tbody id="staff-orders-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+               ADMIN / OWNER MANAGEMENT SUITE
+               ========================================== -->
+
+            <!-- Admin Dashboard -->
+            <div id="page-admin-dashboard" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-chart-line"></i> Executive Business Overview</h1>
+                        <p class="page-subtitle">Monitor operational capacity, daily appointments, staff output, and total revenue.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-secondary" onclick="app.navigate('admin-reports')">
+                            <i class="fa-solid fa-file-invoice-dollar"></i> Reports
+                        </button>
+                        <button class="btn btn-primary" onclick="app.navigate('admin-settings')">
+                            <i class="fa-solid fa-sliders"></i> System Settings
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card emerald">
+                        <div class="stat-content">
+                            <div class="stat-label">Monthly Gross Revenue</div>
+                            <div class="stat-value" id="admin-stat-revenue">₱0</div>
+                            <div class="stat-trend"><i class="fa-solid fa-arrow-trend-up"></i> Collected this month</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-coins"></i></div>
+                    </div>
+                    <div class="stat-card sky">
+                        <div class="stat-content">
+                            <div class="stat-label">Active Orders In Flight</div>
+                            <div class="stat-value" id="admin-stat-active-orders">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-shirt"></i></div>
+                    </div>
+                    <div class="stat-card amber">
+                        <div class="stat-content">
+                            <div class="stat-label">Today's Scheduled Drop-offs</div>
+                            <div class="stat-value" id="admin-stat-today-apts">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-calendar-day"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-label">Registered Customers</div>
+                            <div class="stat-value" id="admin-stat-customers">0</div>
+                        </div>
+                        <div class="stat-icon-box"><i class="fa-solid fa-users"></i></div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-receipt"></i> Recent Orders Ledger</h3>
+                        <button class="btn btn-secondary btn-sm" onclick="app.navigate('admin-appointments')">All Appointments</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-recent-orders-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Appointments -->
+            <div id="page-admin-appointments" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-calendar-days"></i> Master Appointments Ledger</h1>
+                        <p class="page-subtitle">Comprehensive registry of customer bookings across all days and slots.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Search Appointments</h3>
+                    <div class="input-with-icon" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-search input-icon"></i>
+                        <input type="text" id="appointments-search" class="form-control with-icon" placeholder="Search by customer name, email, date, or status..." oninput="app.filterAppointments(this.value)">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Apt #</th>
+                                    <th>Date</th>
+                                    <th>Time Slot</th>
+                                    <th>Customer</th>
+                                    <th>Linked Order</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-appointments-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Time Slots -->
+            <div id="page-admin-timeslots" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-clock"></i> Weekly Time Slot Matrix</h1>
+                        <p class="page-subtitle">Configure operating hours, slot intervals, and order intake caps.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.openModal('modal-add-slot')">
+                        <i class="fa-solid fa-plus"></i> Add Time Slot
+                    </button>
+                </div>
+
+                <div id="admin-timeslots-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;"></div>
+            </div>
+
+            <!-- Admin Users -->
+            <div id="page-admin-users" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-users"></i> User & Staff Directory</h1>
+                        <p class="page-subtitle">Manage customer profiles and register authorized staff personnel.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.openModal('modal-add-staff')">
+                        <i class="fa-solid fa-user-plus"></i> Register Staff Member
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Search Users</h3>
+                    <div class="input-with-icon" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-search input-icon"></i>
+                        <input type="text" id="users-search" class="form-control with-icon" placeholder="Search by name, email, phone, or role..." oninput="app.filterUsers(this.value)">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th>Account Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-users-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Services -->
+            <div id="page-admin-services" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-tags"></i> Laundry Services & Rate Cards</h1>
+                        <p class="page-subtitle">Manage service catalog offerings, per-kg pricing, and estimated turnaround cycles.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.openModal('modal-add-service')">
+                        <i class="fa-solid fa-plus"></i> Add New Service
+                    </button>
+                </div>
+
+                <div id="admin-services-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;"></div>
+            </div>
+
+            <!-- Admin Pickups -->
+            <div id="page-admin-pickups" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-truck-fast"></i> Pickup & Delivery Handover</h1>
+                        <p class="page-subtitle">Orders ready at counter or queued for dispatch delivery.</p>
+                    </div>
+                </div>
+
+                <div id="admin-pickups-list"></div>
+            </div>
+
+            <!-- Admin Announcements -->
+            <div id="page-admin-announcements" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-bullhorn"></i> Customer Announcements</h1>
+                        <p class="page-subtitle">Broadcast holiday hours, promotional campaigns, and service advisories.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.openModal('modal-add-announcement')">
+                        <i class="fa-solid fa-plus"></i> New Announcement
+                    </button>
+                </div>
+
+                <div id="admin-announcements-list"></div>
+            </div>
+
+            <!-- Admin Reports -->
+            <div id="page-admin-reports" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-file-invoice-dollar"></i> Business Analytics & Revenue</h1>
+                        <p class="page-subtitle">Evaluate performance metrics, customer volume, and financial yields.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> Select Report Type</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;">
+                        <button class="btn btn-secondary" onclick="app.generateReport('daily')"><i class="fa-solid fa-calendar-day"></i> Daily Summary</button>
+                        <button class="btn btn-secondary" onclick="app.generateReport('weekly')"><i class="fa-solid fa-calendar-week"></i> Weekly Summary</button>
+                        <button class="btn btn-secondary" onclick="app.generateReport('monthly')"><i class="fa-solid fa-calendar-days"></i> Monthly Report</button>
+                        <button class="btn btn-secondary" onclick="app.generateReport('services')"><i class="fa-solid fa-tags"></i> Service Performance</button>
+                        <button class="btn btn-secondary" onclick="app.generateReport('customers')"><i class="fa-solid fa-users"></i> Top Customers</button>
+                        <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Report</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Search Reports</h3>
+                    <div class="input-with-icon" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-search input-icon"></i>
+                        <input type="text" id="reports-search" class="form-control with-icon" placeholder="Search report data..." oninput="app.filterReportData(this.value)">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div id="admin-report-container"></div>
+                </div>
+            </div>
+
+            <!-- Admin Settings -->
+            <div id="page-admin-settings" class="page">
+                <div class="page-header-row">
+                    <div>
+                        <h1 class="page-title"><i class="fa-solid fa-sliders"></i> Shop Profile & System Rules</h1>
+                        <p class="page-subtitle">Configure business identity, operating hours, and cancellation thresholds.</p>
+                    </div>
+                </div>
+
+                <div class="card" style="background-color: #e8f6f5; border-left: 4px solid #0e7c7b;">
+                    <div style="padding: 0.75rem; margin-bottom: 1.5rem; background: white; border-radius: 0.375rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fa-solid fa-info-circle" style="color: #0e7c7b; font-size: 1.1rem;"></i>
+                        <span style="color: #0a4745; font-size: 0.9rem; font-weight: 600;">✓ Auto-Save Enabled - All changes are saved instantly when you update any field</span>
+                    </div>
+
+                    <form onsubmit="app.saveSettings(event)">
+                        <h3 class="card-title" style="margin-bottom: 1.25rem;"><i class="fa-solid fa-user-tie"></i> Owner Profile & Administrator Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Owner First Name <span class="req">*</span></label>
+                                <input type="text" id="owner-cfg-fname" class="form-control" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Owner Last Name <span class="req">*</span></label>
+                                <input type="text" id="owner-cfg-lname" class="form-control" placeholder="Last Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Owner Login Email <span class="req">*</span></label>
+                                <input type="email" id="owner-cfg-email" class="form-control" placeholder="owner@cleanpro.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Owner Mobile Phone</label>
+                                <input type="tel" id="owner-cfg-phone" class="form-control" placeholder="+63 917 000 0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Change Owner Password (leave blank to keep current password)</label>
+                            <input type="password" id="owner-cfg-password" class="form-control" placeholder="Enter new password (minimum 6 characters)" minlength="6">
+                            <div class="form-hint">Only enter a value if you wish to change your login password.</div>
+                        </div>
+
+                        <h3 class="card-title" style="margin: 2rem 0 1.25rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;"><i class="fa-solid fa-store"></i> Store Branding</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Shop Legal Name</label>
+                                <input type="text" id="shop-cfg-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Shop Tagline</label>
+                                <input type="text" id="shop-cfg-tagline" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Shop Logo File Upload & Live Preview -->
+                        <div class="form-group">
+                            <label class="form-label">Shop Brand Logo</label>
+                            <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; background: var(--slate-50); padding: 1.25rem; border: 1.5px dashed var(--slate-300); border-radius: var(--radius-lg);">
+                                <!-- Live Preview Box -->
+                                <div id="shop-logo-preview-box" style="width: 72px; height: 72px; border-radius: var(--radius-md); background: white; border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 2.2rem; flex-shrink: 0; box-shadow: var(--shadow-sm);">
+                                    🧺
+                                </div>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.4rem;">Upload Image File</label>
+                                    <input type="file" id="shop-cfg-logo-file" class="form-control" accept="image/png, image/jpeg, image/jpg, image/webp, image/svg+xml" onchange="app.handleLogoFileUpload(event)">
+                                    <div class="form-hint" style="margin-top: 0.4rem;">
+                                        <i class="fa-solid fa-circle-info"></i> Supported: PNG, JPG, SVG, WebP &nbsp;•&nbsp; Max size: 2 MB.<br>
+                                        The logo will appear on the sidebar, login screen, and printed claim slips.
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="app.resetLogoToDefault()" title="Restore default icon">
+                                    <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Contact Phone</label>
+                                <input type="tel" id="shop-cfg-phone" class="form-control" placeholder="+63 (02) 8876-5432">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Official Email</label>
+                                <input type="email" id="shop-cfg-email" class="form-control" placeholder="care@yourshop.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Operating Hours (Open → Close)</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="time" id="shop-cfg-open" class="form-control">
+                                    <input type="time" id="shop-cfg-close" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Store Physical Address</label>
+                                <textarea id="shop-cfg-address" class="form-control" rows="2" placeholder="Complete store address"></textarea>
+                            </div>
+                        </div>
+
+
+                        <h3 class="card-title" style="margin: 2rem 0 1.25rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+                            <i class="fa-solid fa-gear"></i> Policy Rules
+                        </h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Advance Booking Window (Days Ahead)</label>
+                                <input type="number" id="sys-cfg-book-window" class="form-control" min="1" max="90">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Cancellation Window (Hours Before Slot)</label>
+                                <input type="number" id="sys-cfg-cancel-window" class="form-control" min="1" max="72">
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fa-solid fa-floppy-disk"></i> Verify & Confirm All Settings
+                            </button>
+                            <span style="color: var(--slate-500); font-size: 0.9rem;">
+                                <i class="fa-solid fa-circle-info"></i> Each field auto-saves when changed
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+       3. MODALS SYSTEM
+       ========================================================================== -->
+
+    <!-- Claim Receipt Printable Modal -->
+    <div id="modal-claim-receipt" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-receipt"></i> Official Claim Stub</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-claim-receipt')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="claim-receipt-content" class="receipt-paper"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="app.closeModal('modal-claim-receipt')">Close</button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> Print Thermal Receipt
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Staff Modal -->
+    <div id="modal-add-staff" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-user-plus"></i> Register Staff Member</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-add-staff')">&times;</button>
+            </div>
+            <form onsubmit="app.addStaff(event)">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name <span class="req">*</span></label>
+                            <input type="text" id="new-staff-fname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="req">*</span></label>
+                            <input type="text" id="new-staff-lname" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Staff Email <span class="req">*</span></label>
+                        <input type="email" id="new-staff-email" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Initial Password <span class="req">*</span></label>
+                            <input type="password" id="new-staff-password" class="form-control" minlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Mobile Phone</label>
+                            <input type="tel" id="new-staff-phone" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal('modal-add-staff')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Staff Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Time Slot Modal -->
+    <div id="modal-add-slot" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-clock"></i> Add Time Slot</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-add-slot')">&times;</button>
+            </div>
+            <form onsubmit="app.addTimeSlot(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Day of Week <span class="req">*</span></label>
+                        <select id="new-slot-day" class="form-control" required>
+                            <option value="1">Monday</option>
+                            <option value="2">Tuesday</option>
+                            <option value="3">Wednesday</option>
+                            <option value="4">Thursday</option>
+                            <option value="5">Friday</option>
+                            <option value="6">Saturday</option>
+                            <option value="0">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Start Time <span class="req">*</span></label>
+                            <input type="time" id="new-slot-start" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">End Time <span class="req">*</span></label>
+                            <input type="time" id="new-slot-end" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Capacity Limit (Orders)</label>
+                        <input type="number" id="new-slot-capacity" class="form-control" min="1" value="5" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal('modal-add-slot')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Time Slot</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Service Modal -->
+    <div id="modal-add-service" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-tags"></i> Add Laundry Service</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-add-service')">&times;</button>
+            </div>
+            <form onsubmit="app.addService(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Service Title <span class="req">*</span></label>
+                        <input type="text" id="new-srv-name" class="form-control" placeholder="E.g., Sneaker Deep Sanitizing" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description <span class="req">*</span></label>
+                        <textarea id="new-srv-desc" class="form-control" placeholder="Brief explanation of garments covered and wash process..." rows="2" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Base Rate per kg (₱) <span class="req">*</span></label>
+                            <input type="number" id="new-srv-price" class="form-control" min="1" step="0.5" placeholder="200" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Est. Turnaround (Days) <span class="req">*</span></label>
+                            <input type="number" id="new-srv-days" class="form-control" min="1" value="2" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal('modal-add-service')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Service</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Announcement Modal -->
+    <div id="modal-add-announcement" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-bullhorn"></i> New Broadcast Announcement</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-add-announcement')">&times;</button>
+            </div>
+            <form onsubmit="app.addAnnouncement(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Headline / Title <span class="req">*</span></label>
+                        <input type="text" id="new-anc-title" class="form-control" placeholder="E.g., Holiday Schedule Notice" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Announcement Content <span class="req">*</span></label>
+                        <textarea id="new-anc-content" class="form-control" placeholder="Full message displayed to customers..." rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notice Type</label>
+                        <select id="new-anc-type" class="form-control">
+                            <option value="general">General Information</option>
+                            <option value="holiday">Holiday Notice</option>
+                            <option value="schedule-change">Schedule Change</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" id="new-anc-start" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">End Date</label>
+                            <input type="date" id="new-anc-end" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 0.25rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem; line-height: 1.4;">
+                            <input type="checkbox" id="new-anc-notify" checked style="margin-top: 0.2rem; width: 1rem; height: 1rem;">
+                            <span><strong>Send as notification</strong><br>
+                            <span style="color: #6b7280; font-size: 0.8rem;">Also sends it to the notification bell of all customers and staff (and to new sign-ups while it is still ongoing).</span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal('modal-add-announcement')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Publish Notice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="modal-forgot-password" class="modal-overlay">
+        <div class="modal-dialog" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-key"></i> Password Recovery</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('modal-forgot-password')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: #6b7280; font-size: 0.9rem; line-height: 1.6;">Passwords can't be recovered by email. Please contact the shop &mdash; the owner can set a new password for you from the <strong>User Directory</strong>, and you can change it afterwards.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="app.closeModal('modal-forgot-password')">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Core Engine Scripts -->
+    <script src="app.js?v=20261012b"></script>
+</body>
+</html>

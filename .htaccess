@@ -1,0 +1,5 @@
+Options -Indexes
+<Files "config.php">
+    # config.php is only ever included by other PHP files, never requested directly
+    Require all denied
+</Files>
